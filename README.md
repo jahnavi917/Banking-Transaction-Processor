@@ -8,3 +8,7 @@
 **Immutability and Scale**: Financial data sizes use `BigDecimal` rather than `double` or `float` to systematically avoid binary floating-point rounding discrepancies.
 **Event Sourcing**: Rebuild the ledger layer using true Event Sourcing architecture (Kafka/Axon Framework) rather than basic relational rows, transforming updates into a stream of immutable financial occurrences.
 **Idempotency Engine**: Introduce an idempotency key infrastructure on REST processing layers (`X-Idempotency-Key`) to securely handle duplicate client requests from dropping connections or retry timeouts.
+## curl -X POST http://localhost:8080/api/v1/accounts/transfer \
+## -H "Content-Type: application/json" \
+## -d '{"fromAccountId": "ACC-001", "toAccountId": "ACC-002", "amount": 40.00}' 
+##  output  HTTP/1.1 200 OK
